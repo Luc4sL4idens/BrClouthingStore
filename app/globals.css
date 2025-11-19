@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #1a1a2e;
+  --secondary: #16213e;
+  --accent: #0f3460;
+  --highlight: #e94560;
+}
+
+body {
+  @apply bg-gray-50 text-gray-900;
+}
+
+/* Estilos personalizados para BrClouthingStore */
+.btn-primary {
+  @apply bg-highlight text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-600 transition-colors;
+}
+
+.btn-secondary {
+  @apply bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors;
+}
+
+.input-field {
+  @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-highlight;
+}
+
+.card {
+  @apply bg-white rounded-lg shadow-md overflow-hidden;
+}
+
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
