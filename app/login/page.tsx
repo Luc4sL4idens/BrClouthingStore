@@ -20,9 +20,9 @@ export default function LoginPage() {
   const router = useRouter()
 
   // Redireciona se já estiver logado
-  if (!loading && user) {
+  if (user) {
     router.push('/produtos')
-    return null
+    return <Loading />
   }
 
   if (loading) {
@@ -46,10 +46,9 @@ export default function LoginPage() {
 
     try {
       await signIn(email, senha)
-      router.push('/produtos')
+      // Redirecionamento automático quando user é definido
     } catch (error: any) {
       setErro(error.message || 'Erro ao fazer login. Verifique suas credenciais.')
-    } finally {
       setCarregando(false)
     }
   }
