@@ -46,7 +46,12 @@ ALTER TABLE produtos ENABLE ROW LEVEL SECURITY;
 ALTER TABLE compras ENABLE ROW LEVEL SECURITY;
 
 -- Políticas de segurança para usuários
--- Usuários podem ver apenas seus próprios dados
+-- Permitir inserção de novos usuários
+CREATE POLICY "Permitir inserção de usuários"
+  ON usuarios FOR INSERT
+  WITH CHECK (true);
+
+-- Usuários podem ver seus próprios dados
 CREATE POLICY "Usuários podem ver seus próprios dados"
   ON usuarios FOR SELECT
   USING (auth.uid()::text = id::text);

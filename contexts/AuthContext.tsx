@@ -116,8 +116,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       if (dbError) throw dbError
 
-      // 3. Fazer login automático
-      await signIn(cadastro.email, cadastro.senha)
+      // 3. Definir o usuário localmente (já está autenticado após signUp)
+      setUser({
+        id: authData.user.id,
+        nome: cadastro.nome,
+        cpf: cadastro.cpf,
+        endereco: cadastro.endereco,
+        email: cadastro.email,
+        created_at: new Date().toISOString(),
+      })
     } catch (error: any) {
       throw new Error(error.message || 'Erro ao cadastrar usuário')
     }
